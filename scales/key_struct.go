@@ -1,4 +1,4 @@
-package revoutil
+package scales
 
 import (
 	"fmt"
