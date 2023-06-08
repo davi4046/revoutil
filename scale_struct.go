@@ -1,4 +1,4 @@
-package keys
+package revoutil
 
 import (
 	"embed"
