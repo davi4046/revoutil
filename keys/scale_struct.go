@@ -1,4 +1,4 @@
-package revokey
+package keys
 
 import (
 	"embed"

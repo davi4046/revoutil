@@ -1,4 +1,4 @@
-package chordutil
+package chords
 
 import (
 	"regexp"
