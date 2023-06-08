@@ -1,4 +1,4 @@
-module revoutil
+module github.com/davi4046/revoutil
 
 go 1.20
 
