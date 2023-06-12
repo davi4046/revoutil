@@ -1,4 +1,4 @@
-package scales
+package revoutil
 
 import (
 	"embed"
