@@ -13,6 +13,23 @@ type Key struct {
 	Scale          Scale
 }
 
+func NewKey(pitchName string, scaleName string) *Key {
+	pitch, ok := pitchClassMap[pitchName]
+	if !ok {
+		return nil
+	}
+
+	scale, ok := GetScaleByName(scaleName)
+	if !ok {
+		return nil
+	}
+
+	return &Key{
+		RootPitchClass: pitch,
+		Scale:          scale,
+	}
+}
+
 func (k Key) GetPitchClassSet() []int {
 
 	var pitchClassSet []int
@@ -44,8 +61,6 @@ func (k Key) RelativeToAbsoluteChord(s string) string {
 			if len(degreeTriads) == 1 {
 				parts[1] = maps.Keys(degreeTriads)[0]
 			}
-			// FIND EN MÅDE AT OPBEVARE LANGE BESKEDER
-			// fmt.Printf("INFO: The quality of the chord '%s' could not be inferred during conversion from scale-relative to non-scale-relative chord as the quality of the triad built on scale degree %d in the scale '%s' is ambiguous.\n", s, degree, k.Scale.Name)
 		}
 	}
 
