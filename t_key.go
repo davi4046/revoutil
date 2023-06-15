@@ -2,6 +2,7 @@ package revoutil
 
 import (
 	"fmt"
+	"math"
 	"strconv"
 	"strings"
 
@@ -10,7 +11,7 @@ import (
 
 type Key struct {
 	RootPitchClass int
-	Scale          Scale
+	Scale          *Scale
 }
 
 func NewKey(pitchName string, scaleName string) *Key {
@@ -26,7 +27,7 @@ func NewKey(pitchName string, scaleName string) *Key {
 
 	return &Key{
 		RootPitchClass: pitch,
-		Scale:          scale,
+		Scale:          &scale,
 	}
 }
 
@@ -65,4 +66,10 @@ func (k Key) RelativeToAbsoluteChord(s string) string {
 	}
 
 	return strings.Join(parts, " ")
+}
+
+func (k Key) DegreeToMIDI(degree int) int {
+	pitchClassSet := k.GetPitchClassSet()
+	octave := int(math.Floor(float64(degree)/float64(len(pitchClassSet))) + 4)
+	return pitchClassSet[degree%len(pitchClassSet)] + 12*octave
 }
