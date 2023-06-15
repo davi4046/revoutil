@@ -6,6 +6,7 @@ import (
 	"strconv"
 	"strings"
 
+	"github.com/davi4046/revoutil/circmath"
 	"golang.org/x/exp/maps"
 )
 
@@ -71,5 +72,6 @@ func (k Key) RelativeToAbsoluteChord(s string) string {
 func (k Key) DegreeToMIDI(degree int) int {
 	pitchClassSet := k.GetPitchClassSet()
 	octave := int(math.Floor(float64(degree)/float64(len(pitchClassSet))) + 4)
-	return pitchClassSet[degree%len(pitchClassSet)] + 12*octave
+	index := circmath.CircAdd(degree, 0, 0, len(pitchClassSet))
+	return pitchClassSet[index] + 12*octave
 }
