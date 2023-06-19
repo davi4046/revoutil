@@ -6,6 +6,6 @@ type Note struct {
 	// Duration of the note in whole notes.
 	Duration float64
 
-	Channel uint
-	Track   uint
+	Channel int
+	Track   int
 }
