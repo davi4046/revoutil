@@ -16,7 +16,7 @@ type Key struct {
 }
 
 func NewKey(pitchName string, scaleName string) *Key {
-	pitch, ok := pitchClassMap[pitchName]
+	pitch, ok := PitchClassMap[pitchName]
 	if !ok {
 		return nil
 	}

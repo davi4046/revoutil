@@ -13,7 +13,7 @@ func GetChordMembers(s string) ([]int, error) {
 
 	var rootPitchClass int
 
-	rootPitchClass, ok := pitchClassMap[parts[0]]
+	rootPitchClass, ok := PitchClassMap[parts[0]]
 	if !ok {
 		i, err := strconv.Atoi(parts[0])
 		if err != nil {
@@ -100,42 +100,4 @@ func GetChordMembers(s string) ([]int, error) {
 	}
 
 	return members, nil
-}
-
-var pitchClassMap = map[string]int{
-	"C":  0,
-	"C#": 1,
-	"Db": 1,
-	"D":  2,
-	"D#": 3,
-	"Eb": 3,
-	"E":  4,
-	"Fb": 4,
-	"E#": 5,
-	"F":  5,
-	"F#": 6,
-	"Gb": 6,
-	"G":  7,
-	"G#": 8,
-	"Ab": 8,
-	"A":  9,
-	"A#": 10,
-	"Bb": 10,
-	"B":  11,
-	"Cb": 11,
-	"B#": 0,
-}
-
-var qualityMap = map[string][]int{
-	"maj":  {0, 4, 7, 11, 14, 17, 21},
-	"min":  {0, 3, 7, 10, 14, 17, 20},
-	"aug":  {0, 4, 8, 11, 14, 17, 21},
-	"dim":  {0, 3, 6, 10, 14, 17, 20},
-	"dom":  {0, 4, 7, 10, 13, 17, 20},
-	"sus2": {0, 2, 7, 11, 14, 17, 21},
-	"sus4": {0, 5, 7, 11, 14, 17, 21},
-}
-
-var extensions = []string{
-	"3", "5", "7", "9", "11", "13",
 }
