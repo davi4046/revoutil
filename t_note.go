@@ -5,6 +5,8 @@ type Note struct {
 	Pitch int
 	// Duration of the note in whole notes.
 	Duration float64
+	// Whether or not this note is a pause.
+	IsPause bool
 
 	Channel int
 	Track   int
