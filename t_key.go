@@ -8,9 +8,9 @@ import (
 	"github.com/davi4046/revoutil/circmath"
 )
 
-type LightKey []int
+type Key []int
 
-func NewLightKey(pitch int, scale int) LightKey {
+func NewKey(pitch int, scale int) Key {
 	binary := fmt.Sprintf("%12s", strconv.FormatInt(int64(scale), 2))
 
 	var pitchClassSet []int
@@ -24,7 +24,7 @@ func NewLightKey(pitch int, scale int) LightKey {
 	return pitchClassSet
 }
 
-func (k LightKey) DegreeToMIDI(degree int) int {
+func (k Key) DegreeToMIDI(degree int) int {
 	octave := int(math.Floor(float64(degree)/float64(len(k))) + 4)
 	index := circmath.CircAdd(degree, 0, 0, len(k))
 	return k[index] + 12*octave
