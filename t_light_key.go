@@ -11,7 +11,7 @@ import (
 type LightKey []int
 
 func NewLightKey(pitch int, scale int) LightKey {
-	binary := fmt.Sprintf("%012s", strconv.FormatInt(int64(scale), 2))
+	binary := fmt.Sprintf("%12s", strconv.FormatInt(int64(scale), 2))
 
 	var pitchClassSet []int
 

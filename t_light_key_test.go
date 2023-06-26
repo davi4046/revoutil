@@ -1,10 +1,11 @@
 package revoutil
 
 import (
+	"fmt"
 	"testing"
 )
 
 func TestNewLightKey(t *testing.T) {
-	key := NewLightKey(10, 2741)
-	t.Error(key)
+	fmt.Println(NewLightKey(0, 2773))
+	t.Error("hello")
 }
