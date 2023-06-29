@@ -5,19 +5,23 @@ import (
 	"math"
 	"strconv"
 
+	"slices"
+
 	"github.com/davi4046/revoutil/circmath"
 )
 
 type Key []int
 
 func NewKey(pitch int, scale int) Key {
-	binary := fmt.Sprintf("%12s", strconv.FormatInt(int64(scale), 2))
+	binary := []rune(fmt.Sprintf("%12s", strconv.FormatInt(int64(scale), 2)))
+
+	slices.Reverse(binary)
 
 	var pitchClassSet []int
 
 	for i, char := range binary {
 		if char == '1' {
-			pitchClassSet = append(pitchClassSet, (i+pitch)%12)
+			pitchClassSet = append(pitchClassSet, i+pitch)
 		}
 	}
 
